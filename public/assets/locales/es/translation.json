@@ -1,6 +1,6 @@
 {
-  "app_title": "Touché!",
+  "app_title": "Español",
   "language": "Idioma",
-  "welcome_message": "Hola Andrea!",
-  "days_since_release": "Han pasado {{number_of_days}} días desde el lanzamiento de este video"
+  "welcome_message": "¡Bienvenido!",
+  "days_since_release": "Desde el inicio de este proyecto hasta hoy han pasado {{ number_of_days }} días."
 }

@@ -4,6 +4,9 @@ import i18next from "i18next";
 import cookies from "js-cookie";
 import classNames from "classnames";
 
+
+
+
 const languages = [
   {
     code: "fr",
@@ -46,7 +49,7 @@ export default function App() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
 
-  const releaseDate = new Date("2021-03-07");
+  const releaseDate = new Date("2021-03-24");
   const timeDifference = new Date() - releaseDate;
   const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
@@ -103,6 +106,7 @@ export default function App() {
         <h1 className="font-weight-normal mb-3">{t("welcome_message")}</h1>
         <p>{t("days_since_release", { number_of_days })}</p>
       </div>
+      
     </div>
   );
 }
