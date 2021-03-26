@@ -1,11 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
 import classNames from "classnames";
 
-
-
+// *------------------------------------------------=> REACTSTRAP: Desde aquí...
+import {
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
+// *-----------------------------------------------=> REACTSTRAP: ...hasta aquí.
 
 const languages = [
   {
@@ -22,7 +28,7 @@ const languages = [
     code: "ar",
     name: "عربي",
     country_code: "sa",
-    dir: 'rtl'
+    dir: "rtl",
   },
   {
     code: "es",
@@ -31,7 +37,7 @@ const languages = [
   },
 ];
 
-const GlobeIcon = ({width=24, height=24}) => (
+const GlobeIcon = ({ width = 24, height = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -52,6 +58,11 @@ export default function App() {
   const releaseDate = new Date("2021-03-24");
   const timeDifference = new Date() - releaseDate;
   const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  // *----------------------------------------------=> REACTSTRAP: Desde aquí...
+  const [dropdownOpen, setOpen] = useState(false);
+  const toggle = () => setOpen(!dropdownOpen);
+  // *---------------------------------------------=> REACTSTRAP: ...hasta aquí.
 
   useEffect(() => {
     console.log("Setting page stuff");
@@ -106,7 +117,21 @@ export default function App() {
         <h1 className="font-weight-normal mb-3">{t("welcome_message")}</h1>
         <p>{t("days_since_release", { number_of_days })}</p>
       </div>
-      
+
+      {/*----------------------------------------=> REACTSTRAP: Desde aquí...*/}
+      <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+        <DropdownToggle caret>
+          <GlobeIcon />
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem header>Header</DropdownItem>
+          <DropdownItem disabled>Action</DropdownItem>
+          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem>Another Action</DropdownItem>
+        </DropdownMenu>
+      </ButtonDropdown>
+      {/*---------------------------------------=> REACTSTRAP: ...hasta aquí.*/}
     </div>
   );
 }
